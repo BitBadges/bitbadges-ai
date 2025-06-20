@@ -1,0 +1,31 @@
+{
+  "name": "bitbadges-ai",
+  "version": "1.0.0",
+  "description": "Autonomous AI agent for BitBadges blockchain interaction",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently --kill-others-on-fail --prefix-colors \"blue,green\" --names \"backend,frontend\" \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "npm run dev --workspace=backend",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "dev:backend-only": "cd packages/backend && npm run dev",
+    "dev:frontend-only": "cd packages/frontend && npm run dev",
+    "build": "npm run build --workspace=backend && npm run build --workspace=frontend",
+    "build:backend": "npm run build --workspace=backend",
+    "build:frontend": "npm run build --workspace=frontend",
+    "start": "npm start --workspace=backend",
+    "lint": "npm run lint --workspace=backend && npm run lint --workspace=frontend",
+    "type-check": "npm run type-check --workspace=backend && npm run type-check --workspace=frontend",
+    "clean": "npm run clean --workspace=backend && npm run clean --workspace=frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
