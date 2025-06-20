@@ -14,6 +14,10 @@ export const useSocket = (
             onMessageRef.current(message);
         };
 
+        // Connect to socket first
+        socketService.connect(serverUrl);
+        
+        // Set up message handler
         socketService.onMessage(messageHandler);
 
         return () => {
