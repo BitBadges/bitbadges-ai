@@ -1,5 +1,6 @@
 import { Plugin, CommandResult } from '../types';
 import { WalletService } from '../services/walletService';
+import { getCurrentNodeUrl, getCurrentRpcUrl } from '../services/settingsService';
 
 export const walletPlugin = {
     name: 'wallet',
@@ -215,10 +216,7 @@ export const walletPlugin = {
         }
 
         try {
-            const nodeUrl =
-                params.nodeUrl ||
-                process.env.BITBADGES_NODE_URL ||
-                'http://localhost:1317';
+            const nodeUrl = params.nodeUrl || getCurrentNodeUrl();
             const accountInfo = await walletService.getCosmosAccountInfo(
                 nodeUrl
             );
@@ -343,10 +341,7 @@ export const walletPlugin = {
         }
 
         try {
-            const nodeUrl =
-                params.nodeUrl ||
-                process.env.BITBADGES_NODE_URL ||
-                'http://localhost:1317';
+            const nodeUrl = params.nodeUrl || getCurrentNodeUrl();
             const balance = await walletService.getBitBadgesBalance(nodeUrl);
 
             return {
@@ -358,7 +353,7 @@ export const walletPlugin = {
                     rawBalance: `${balance.ubadge} ubadge`,
                 },
                 logs: [
-                    `BitBadges balance: ${balance.badge} $BADGE (${balance.ubadge} ubadge)`,
+                    `Balance: ${balance.badge} $BADGE (${balance.ubadge} ubadge)`,
                     `Address: ${balance.address}`,
                 ],
             };

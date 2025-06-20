@@ -42,3 +42,5 @@ temp/
 .idea/
 *.swp
 *.swo
+
+data/*

@@ -79,4 +79,32 @@ export const apiService = {
         );
         return response.data;
     },
+
+    // Settings Management
+    async getSettings(): Promise<{
+        success: boolean;
+        apiKey: string;
+        chainId: string;
+        creatorAddress: string;
+    }> {
+        const response = await api.get('/settings');
+        return response.data;
+    },
+
+    async saveSettings(settings: {
+        apiKey: string;
+        chainId: string;
+        creatorAddress: string;
+    }): Promise<{
+        success: boolean;
+        message: string;
+        settings: {
+            apiKey: string;
+            chainId: string;
+            creatorAddress: string;
+        };
+    }> {
+        const response = await api.post('/settings', settings);
+        return response.data;
+    },
 };

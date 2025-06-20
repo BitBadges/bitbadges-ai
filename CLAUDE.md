@@ -88,9 +88,7 @@ Copy `.env.example` files in both packages and configure:
 
 ### Plugin System
 Commands use `/command` syntax:
-- `/http {"url": "...", "method": "GET"}` - HTTP requests
-- `/bitbadges getUser {"address": "cosmos1..."}` - BitBadges queries
-- `/code console.log("hello")` - Code execution
+- `/wallet` - Wallet tx commands
 - `/help` - Show available commands
 
 ### BitBadges Integration
@@ -102,7 +100,6 @@ The `bitbadges` plugin provides methods for:
 - `getUser` - Get user profile
 
 ## Development Notes
-
 - Backend runs on port 3005 by default
 - Frontend runs on port 3006 by default
 - WebSocket connection established automatically

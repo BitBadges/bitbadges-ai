@@ -6,6 +6,7 @@ interface WalletBalanceProps {
     hasWallet: boolean;
     address?: string;
     className?: string;
+    onBalanceLoad?: (balance: string) => void;
 }
 
 interface BalanceData {
@@ -20,6 +21,7 @@ export const WalletBalance: React.FC<WalletBalanceProps> = ({
     hasWallet,
     address,
     className,
+    onBalanceLoad,
 }) => {
     const [balance, setBalance] = useState<BalanceData | null>(null);
     const [loading, setLoading] = useState(false);
@@ -53,6 +55,7 @@ export const WalletBalance: React.FC<WalletBalanceProps> = ({
             }
 
             setBalance(data);
+            onBalanceLoad?.(data.badge);
         } catch (err) {
             setError(
                 err instanceof Error ? err.message : 'Failed to load balance'
@@ -97,7 +100,7 @@ export const WalletBalance: React.FC<WalletBalanceProps> = ({
                 <div className="flex items-center gap-2">
                     <DollarSign className="w-5 h-5 text-purple-600" />
                     <h3 className="text-lg font-semibold text-purple-900">
-                        BitBadges Balance
+                        Wallet Balance
                     </h3>
                 </div>
                 <button
@@ -135,7 +138,7 @@ export const WalletBalance: React.FC<WalletBalanceProps> = ({
                         <div className="text-xs text-purple-700 mb-1">
                             BitBadges Address:
                         </div>
-                        <div className="text-sm font-mono text-purple-800 break-all bg-white/50 p-2 rounded">
+                        <div className="text-xs font-mono text-purple-800 break-all word-break bg-white/50 p-2 rounded leading-tight">
                             {balance.address}
                         </div>
                     </div>

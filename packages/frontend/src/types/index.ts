@@ -46,6 +46,7 @@ export interface WalletStatus {
   hasWallet: boolean;
   walletExists: boolean;
   address: string | null;
+  bitbadgesAddress: string | null;
   encrypted: boolean;
   createdAt: Date | null;
   lastUsed: Date | null;
