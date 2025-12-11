@@ -22,7 +22,7 @@
     "express-rate-limit": "^7.1.5",
     "fs-extra": "^11.2.0",
     "helmet": "^7.1.0",
-    "js-yaml": "^4.1.0",
+    "js-yaml": "^4.1.1",
     "openai": "^5.5.1",
     "secp256k1": "^5.0.0",
     "socket.io": "^4.7.5"
